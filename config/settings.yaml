@@ -1,0 +1,45 @@
+daily_snapshot:
+  # How many candidate pools to fetch per section before filtering / dedup.
+  # GeckoTerminal returns 20 per page on /pools and /trending_pools.
+  fetch_limit: 20
+
+  # Minimum 24h USD volume to include a row (top_tokens / hot_pairs).
+  # Solana long tail has lots of $1k-$100k pools — set this if you only want
+  # liquid markets surfaced. 0 = no filter.
+  min_volume_24h_usd: 0
+
+  # Section sizes (the card is sized for 3 rows per section).
+  top_tokens_count: 3
+  hot_pairs_count: 3
+  whale_flows_count: 3
+
+  # Whale flows: highest avg-trade-size, restricted to liquid pools.
+  # Stablecoin/SOL pairs dominate this metric (USDC/USDT/SOL/WSOL excluded
+  # by default so memecoin and mid-cap whale flows surface).
+  whale_min_volume_24h_usd: 1000000
+  whale_exclude_base_tokens:
+    - USDC
+    - USDT
+    - SOL
+    - WSOL
+
+  label_max_chars: 40
+  discord_color: 0x9945FF  # Solana purple
+  enable_discord: true
+  enable_x: true
+
+  # Render a 1200x720 PNG card and attach to Discord/X. False = embed/tweet text fallback.
+  image_mode: true
+
+  # Optional Japanese translation. Off by default — token tickers (WIF, SOL,
+  # JUP) read the same in any language. Flip on if you want JP qualifiers
+  # added (e.g. "WIF / SOL · raydium" → "WIF/SOL レイディウム上場").
+  enable_jp_translation: false
+  jp_translation_provider: gemini
+  jp_translation_model: gemini-2.5-flash-lite
+
+  # Optional human-curated labels: { base_token_symbol_lower: short_label }.
+  # Use this to pin a fixed display name for popular tokens.
+  display_aliases: {}
+  #   wif: "dogwifhat (WIF)"
+  #   bonk: "BONK"
