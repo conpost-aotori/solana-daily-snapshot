@@ -107,7 +107,8 @@ python scripts/run_daily.py --no-x       # Discord のみ
 - **GeckoTerminal 429**: free tier で 30 req/min。1日3回の本ジョブなら通常問題なし。
 - **X 403 Forbidden**: アプリ権限が Read only。Developer Portal で Read & write
   に変更後、Access Token を **必ず再生成**。
-- **画像が日本語で豆腐(□)**: `fonts-noto-cjk` がインストールされているか確認
-  (workflow には含めてある)。
+- **画像が日本語で豆腐(□)**: `/usr/share/fonts/opentype/noto/NotoSansCJK-{Bold,Regular}.ttc`
+  があるか確認 (workflow では upstream release から直接ダウンロードしている。
+  ローカル Linux なら `fonts-noto-cjk` を入れれば同じファイルが入る)。
 - **Whale flows が空**: `whale_min_volume_24h_usd` を下げるか、
   `whale_exclude_base_tokens` から SOL を外す。
